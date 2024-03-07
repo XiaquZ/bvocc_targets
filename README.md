@@ -1,2 +1,2 @@
-# bvocc_targets
-backward velocity calculations with targets pipeline
+# vocc_targets
+use targets to calculate backward velocity
