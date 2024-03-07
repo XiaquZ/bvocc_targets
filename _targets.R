@@ -38,10 +38,10 @@ tar_plan(
   future_files = list.files("/lustre1/scratch/348/vsc34871/input/VoCC/futBVoCC/", full.names = T),
   tar_target(tile_names,
     paste0(paste0(str_split(
-      gsub("ForestMAT_", "", tail(str_split(future_files, "/")[[1]], 1)),
+      gsub("ForestMAT_", "", tail(str_split(present_files, "/")[[1]], 1)),
       "_"
     )[[1]][1:2], collapse = "_"), "_"),
-    pattern = map(future_files),
+    pattern = map(present_files),
   ),
   tar_target(backward_vels,
     calc_backward_vel(
