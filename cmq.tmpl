@@ -13,6 +13,6 @@ source $VSC_HOME/.bashrc
 
 conda activate VoCC_R_new
 
-cd $VSC_DATA/vocc_targets/
+cd $VSC_DATA/bvocc_targets/
 
 CMQ_AUTH={{ auth }} R --no-save --no-restore -e 'clustermq:::worker("{{ master }}")'

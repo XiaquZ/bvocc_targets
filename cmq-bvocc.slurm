@@ -1,5 +1,5 @@
 #! /bin/bash
-#SBATCH --job-name=cmq-velocity
+#SBATCH --job-name=cmq-Bvelocity
 #SBATCH --ntasks=1 --cpus-per-task=10 --mem-per-cpu=7000mb
 #SBATCH --time=16:35:00
 
