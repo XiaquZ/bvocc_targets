@@ -18,10 +18,10 @@ tar_option_set(
   resources = tar_resources(
     clustermq = tar_resources_clustermq(template = list(
       job_name = "auto-velocity",
-      per_cpu_mem = "30000mb",
+      per_cpu_mem = "20000mb",
       n_tasks = 1,
       per_task_cpus = 36,
-      walltime = "36:00:00"
+      walltime = "24:00:00"
     ))
   )
 )
@@ -34,8 +34,8 @@ tar_source()
 tar_plan(
   tolerance = 0.25,
   max_distance = 75000,
-  present_files = list.files("/lustre1/scratch/348/vsc34871/input/VoCC/preEast/", full.names = T),
-  future_files = list.files("/lustre1/scratch/348/vsc34871/input/VoCC/futEast/", full.names = T),
+  present_files = list.files("/lustre1/scratch/348/vsc34871/input/VoCC/prefr/", full.names = T),
+  future_files = list.files("/lustre1/scratch/348/vsc34871/input/VoCC/futfr/", full.names = T),
   tar_target(tile_names,
     paste0(paste0(str_split(
       gsub("ForestMAT_", "", tail(str_split(future_files, "/")[[1]], 1)),
