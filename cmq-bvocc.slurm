@@ -1,7 +1,7 @@
 #! /bin/bash
 #SBATCH --job-name=cmq-Bvelocity
 #SBATCH --ntasks=1 --cpus-per-task=10 --mem-per-cpu=6000mb
-#SBATCH --time=28:35:00
+#SBATCH --time=30:35:00
 
 source $VSC_HOME/.bashrc
 
