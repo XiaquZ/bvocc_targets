@@ -34,8 +34,8 @@ tar_source()
 tar_plan(
   tolerance = 0.25,
   max_distance = 75000,
-  present_files = list.files("/lustre1/scratch/348/vsc34871/input/VoCC/prePTES/", full.names = T),
-  future_files = list.files("/lustre1/scratch/348/vsc34871/input/VoCC/futPTES/", full.names = T),
+  present_files = list.files("/lustre1/scratch/348/vsc34871/input/VoCC/preUKIE/", full.names = T),
+  future_files = list.files("/lustre1/scratch/348/vsc34871/input/VoCC/futUKIE/", full.names = T),
   tar_target(tile_names,
     paste0(paste0(str_split(
       gsub("ForestMAT_", "", tail(str_split(future_files, "/")[[1]], 1)),
