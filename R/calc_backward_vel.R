@@ -42,7 +42,7 @@ calc_backward_vel <- function(tile_name,
     distance <- app(ds, fun = sum, na.rm = T) # Sum all layers of ds rast to make complete map
     names(distance) <- "distance"
   # Save results as rasters.
-    backward_vel_file <- paste0("/lustre1/scratch/348/vsc34871/output/BVoMC/CentralEU/bvomc_75kmSR_", tile_name, ".tif")
+    backward_vel_file <- paste0("/lustre1/scratch/348/vsc34871/output/BVoMC/France/bvomc_75kmSR_", tile_name, ".tif")
     backward_vel <- mask(distance, distance <= max_distance, maskvalues = F) / 75 # Calculate velocity 
     backward_vel <- round(backward_vel,1)
     print(backward_vel)
