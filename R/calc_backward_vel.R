@@ -1,8 +1,8 @@
 calc_backward_vel <- function(tile_name,
-                             tolerance,
-                             max_distance,
-                             present_files, # must contain
-                             future_files) {
+                              tolerance,
+                              max_distance,
+                              present_files, # must contain
+                              future_files) {
   print(paste("Now calculating:", tile_name))
 
   ## Load data
@@ -35,19 +35,20 @@ calc_backward_vel <- function(tile_name,
     pre_distance <- distance(pre_filt)
     names(pre_distance) <- "distance"
     analogue_result <- mask(crop(pre_distance, fut_filt), fut_filt)
-    
   })
 
-    ds <- rast(analogue_distances)
-    distance <- app(ds, fun = sum, na.rm = T) # Sum all layers of ds rast to make complete map
-    names(distance) <- "distance"
+  ds <- rast(analogue_distances)
+  distance <- app(ds, fun = sum, na.rm = T) # Sum all layers of ds rast to make complete map
+  names(distance) <- "distance"
   # Save results as rasters.
-    backward_vel_file <- paste0("/lustre1/scratch/348/vsc34871/output/BVoMC/NorthEU/bvomc_75kmSR_", tile_name, ".tif")
-    backward_vel <- mask(distance, distance <= max_distance, maskvalues = F) / 75 # Calculate velocity 
-    backward_vel <- round(backward_vel,1)
-    print(backward_vel)
-    writeRaster(backward_vel, backward_vel_file, overwrite = T) # write
+  backward_vel_file <- paste0(
+    "/lustre1/scratch/348/vsc34871/output/BVoMC/PTES/bvomc_75kmSR_",
+    tile_name, ".tif"
+  )
+  backward_vel <- mask(distance, distance <= max_distance, maskvalues = F) / 75 # Calculate velocity
+  backward_vel <- round(backward_vel, 1)
+  print(backward_vel)
+  writeRaster(backward_vel, backward_vel_file, overwrite = T) # write
 
-    return(backward_vel_file) # Return filename
-
+  return(backward_vel_file) # Return filename
 }
