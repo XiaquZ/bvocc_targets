@@ -9,6 +9,7 @@ calc_backward_vel <- function(tile_name,
   pre <- rast(grep(tile_name, present_files, value = T))
   ## names(pre) <- "pre"
   fut <- rast(grep(tile_name, future_files, value = T))
+  pre <- extend(pre, fut)
   ## names(fut) <- "fut"
 
   ## Round pre and fut to one decimal
