@@ -9,7 +9,10 @@ calc_backward_vel <- function(tile_name,
   pre <- rast(grep(tile_name, present_files, value = T))
   ## names(pre) <- "pre"
   fut <- rast(grep(tile_name, future_files, value = T))
-  pre <- extend(pre, fut)
+ 
+  # Only for the tiles that are too big to process on HPC.
+   pre <- extend(pre, fut)
+
   ## names(fut) <- "fut"
 
   ## Round pre and fut to one decimal
@@ -43,7 +46,7 @@ calc_backward_vel <- function(tile_name,
   names(distance) <- "distance"
   # Save results as rasters.
   backward_vel_file <- paste0(
-    "/lustre1/scratch/348/vsc34871/output/BVoMC/NorthEU/bvomc_75kmSR_",
+    "/lustre1/scratch/348/vsc34871/output/BVoMC/EastEU/bvomc_75kmSR_",
     tile_name, ".tif"
   )
   backward_vel <- mask(distance, distance <= max_distance, maskvalues = F) / 75 # Calculate velocity
